@@ -1,0 +1,147 @@
+<%= javascript_include_tag "fecha" %>
+
+<h2>¿Eres Nuevo? Regístrate</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+
+<!--
+Erroes de Devise
+<%= devise_error_messages! %>
+-->
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :nombre1, class: "form-control", autofocus: true, :label => "Primer nombre:", :required => true %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :nombre2, class: "form-control", :label => "Segundo nombre:"  %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :fecha_nacimiento, :as => :string, :required => true,  :input_html => {  :class => "datepicker " }, :label => "Fecha nacimiento:" %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :apellido1, class: "form-control", :label => "Primer apellido:", :required => true %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :apellido2, class: "form-control", :label => "Segundo apellido:" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :cedula, class: "form-control", :label => "Cedula:", :required => true %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-sm-10">
+        <%= f.input :genero,
+            include_blank: '--Seleccionar--',
+            collection: @user.select_genero.sort,
+            error: false, label: false, required:false,
+            input_html:{ class: 'form-control input-sm' },
+            :label => "Selecciona Tu Genero:",
+            :required => true %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :estado_civil, class: "form-control", :label => "Estado Civil:", :required => true %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.label :profesion_id, :label => "Selecciona Tu Profesion:",  :required => true %><br/>
+            <%= f.collection_select :profesion_id, 
+                Profesion.all, :id, :nombre,
+                include_blank: '--Seleccionar--',
+                input_html:{ class: 'form-control input-sm' } %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :telefono, class: "form-control", :label => "Telefono:", :required => true %>
+        </div>
+    </div>
+    <div class="col-md-4">
+
+        <div class="col-sm-10">
+            <%= f.input :celular, class: "form-control", :label => "Celular:" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :direccion, class: "form-control", :label => "Dirección:", :required => true %>
+        </div>
+    </div>
+</div>
+
+
+
+<div  class="row">
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :tarjeta_profesional, class: "form-control", :label => "Tarjeta Profesional:" %>
+        </div>
+    </div> 
+    <div class="col-md-4">
+        <label for="exampleInputFile">Sube tu imagen:</label>
+        <%= f.file_field :avatar, class: "help-block" %>
+    </div>   
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-11">
+        <div class="col-md-12">
+            <%= f.input :perfil, class: "form-control", :label => "Ingresa una descripción de tu pefil:", as: :text, :required => true %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :email, class: "form-control", :label => "Email:" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :password, autocomplete: "off", class: "form-control", :label => "Contraseña:" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-10">
+            <%= f.input :password_confirmation, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:" %>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-4 boton-registrar">
+        <%= f.submit "Registrate", class: "btn btn-primary" %>
+    </div>
+</div>
+
+
+<% end %>

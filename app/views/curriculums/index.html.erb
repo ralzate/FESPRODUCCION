@@ -1,0 +1,155 @@
+
+<% @curriculums.each do |curriculum| %>
+
+  <h1>Mi Curriculum<%= link_to image_tag("pdf.png"), curriculum_path(curriculum, :format => "pdf"), target: '_blank',  :rel => "tooltip", :title => "Pdf", :class => 'btn btn-link' %></h1>
+
+<% end %>
+
+<h2>Datos Personales</h2>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Cedula</th>
+      <th>Dirección</th>
+      <th>Telefono</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= current_user.id %></td>
+      <td><%= current_user.nombre1.capitalize + ' ' + current_user.nombre2.capitalize %></td>
+      <td><%= current_user.apellido1.capitalize + ' ' + current_user.apellido2.capitalize %></td>
+      <td><%= current_user.cedula %></td>
+      <td><%= current_user.direccion %></td>
+      <td><%= current_user.telefono %></td>
+      <td><%= current_user.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Mis Experiencias Laborales</h2>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Empresa</th>
+      <th>Cargo</th>
+      <th>Telefono</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Terminación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @experiencias_laborales.each do |experiencia_laboral| %>
+    <tr>
+      <td><%= experiencia_laboral.id %></td>
+      <td><%= experiencia_laboral.empresa %></td>
+      <td><%= experiencia_laboral.cargo %></td>
+      <td><%= experiencia_laboral.telefono %></td>
+      <td><%= experiencia_laboral.fecha_inicio %></td>
+      <td><%= experiencia_laboral.fecha_terminacion %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Estudios Complementarios</h2>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Entidad</th>
+      <th>Fecha Terminación</th>
+      <th>Intensidad Horaria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @estudios_complementarios.each do |estudio_complementario| %>
+    <tr>
+      <td><%= experiencia_laboral.id %></td>
+      <td><%= experiencia_laboral.empresa %></td>
+      <td><%= experiencia_laboral.entidad %></td>
+      <td><%= experiencia_laboral.fecha_terminacion %></td>
+      <td><%= experiencia_laboral.intensidad_horaria %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<h2>Informaciones Academicas</h2>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Tipo</th>
+      <th>Nombre</th>
+      <th>Fecha Terminación</th>
+      <th>Titulo Obtenido</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @informaciones_academicas.each do |informacion_academica| %>
+    <tr>
+      <td><%= informacion_academica.id %></td>
+      <td><%= informacion_academica.tipo_de_dato %></td>
+      <td><%= informacion_academica.nombre %></td>
+      <td><%= informacion_academica.fecha_terminacion %></td>
+      <td><%= informacion_academica.titulo_obtenido %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>Referencias Personales</h2>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Profesión</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @referencias_personales.each do |referencias_personales| %>
+    <tr>
+      <td><%= referencias_personales.id %></td>
+      <td><%= referencias_personales.nombre %></td>
+      <td><%= referencias_personales.telefono %></td>
+      <td><%= referencias_personales.profesion %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<% @referencias_personales.each do |referencias_personales| %>
+  <div class="row">
+    <div class="col-md-4">
+        <div class="col-sm-12">
+          <b>Nombre: </b><%= referencias_personales.nombre %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-sm-12">
+        <b>Telefono: </b><%= referencias_personales.telefono %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-sm-12">
+          <b>Profesión: </b><%= referencias_personales.profesion %>
+      </div>
+    </div>
+  </div>
+<% end %>
